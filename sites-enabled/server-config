@@ -44,7 +44,7 @@ server {
 
 	server_name _;
 	location / {
-		root /dist_directory # REPLACE THIS WITH DIST LOCATION
+		root /DIST_LOCATION # REPLACE THIS WITH DIST LOCATION
 		limit_req zone=one;
 	}
 

@@ -1,6 +1,14 @@
-nginx_dir="/etc/nginx/"
+NGINX_PATH="/etc/nginx"
+
 echo "Copying nginx config to system at /etc/nginx/"
-cp nginx.conf $nginx_dir
-server_dir="${nginx_dir}/sites-enabled"
-cp sites-enabled/server_config $server_dir
-echo "System files copied"
+sudo cp -i nginx.conf $NGINX_PATH
+
+SERVER_DIR="${NGINX_PATH}/sites-enabled"
+sudo cp -i sites-enabled/server-config $SERVER_DIR
+
+SERVER_FILE="${SERVER_DIR}/server-config"
+echo "Please enter the absolute location of the webserver's static files"
+read DIST_PATH
+sudo sed -i -e "s/DIST_LOCATION/$DIST_PATH/g" $SERVER_FILE
+
+echo "NGINX server configurations copied"
