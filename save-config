@@ -1,0 +1,6 @@
+nginx_dir="/etc/nginx/"
+echo "Copying nginx config to system at /etc/nginx/"
+cp nginx.conf $nginx_dir
+server_dir="${nginx_dir}/sites-enabled"
+cp sites-enabled/server_config $server_dir
+echo "System files copied"
