@@ -18,7 +18,7 @@ limit_req_zone $binary_remote_addr zone=req_limit_per_ip:10m rate=30r/m;
 
 server {
 	listen 127.0.0.1:80;
-	listen 10.10.31.180:8080;
+	listen LISTEN_IP:LISTEN_PORT; #REPLACE THIS WITH THE LISTENING ADDRESS AND PORT
 	#close slow connections
 	client_body_timeout 5s;
 	client_header_timeout 5s;

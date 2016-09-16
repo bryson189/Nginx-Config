@@ -11,4 +11,9 @@ echo "Please enter the absolute location of the webserver's static files"
 read DIST_PATH
 sudo sed -i -e "s@/DIST_LOCATION@$DIST_PATH@" "$SERVER_FILE"
 
+IPS=($(hostname -I))
+echo "IP address of $IPS read from system"
+sudo sed -i -e "s@LISTEN_IP@$IPS@" "$SERVER_FILE"
+sudo sed -i -e "s@LISTEN_PORT@80@" "$SERVER_FILE"
+
 echo "NGINX server configurations copied"
