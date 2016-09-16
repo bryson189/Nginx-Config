@@ -15,5 +15,13 @@ IPS=($(hostname -I))
 echo "IP address of $IPS read from system"
 sudo sed -i -e "s@LISTEN_IP@$IPS@" "$SERVER_FILE"
 sudo sed -i -e "s@LISTEN_PORT@80@" "$SERVER_FILE"
+sudo service nginx stop
 
 echo "NGINX server configurations copied"
+read -p "Would you like to start the web server on port 80? " -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	sudo service nginx start
+	echo "Starting nginx server..."
+fi
